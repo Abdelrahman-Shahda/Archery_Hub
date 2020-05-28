@@ -1,0 +1,23 @@
+{
+  "name": "archery_hub",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "mongodb": "/home/shahda/mongodb/bin/mongod --dbpath=/home/shahda/mongodb-data"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "googleapis": "^39.2.0",
+    "moment": "^2.25.3",
+    "moment-timezone": "^0.5.28",
+    "mongoose": "^5.9.13"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  }
+}
