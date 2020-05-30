@@ -95,7 +95,7 @@ app.get('/reservations/:location', async(req ,res) => {
         console.log(disabledTimeslots)
         allDays.forEach((day) => {
             if(!availableDays.includes(day)){
-                IgnoreDays[day]=false
+                IgnoreDays[day]=true
             }
         })
         res.send({IgnoreDays, disabledTimeslots, timeslots: availableSlots})
