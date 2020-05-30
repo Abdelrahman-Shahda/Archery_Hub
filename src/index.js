@@ -91,14 +91,14 @@ app.get('/reservations/:location', async(req ,res) => {
             })
         })
         //Get Days that have no training
-        const IgnoreDays={}; 
+        const ignoreDays={}; 
         console.log(disabledTimeslots)
         allDays.forEach((day) => {
             if(!availableDays.includes(day)){
-                IgnoreDays[day]=true
+                ignoreDays[day]=false
             }
         })
-        res.send({IgnoreDays, disabledTimeslots, timeslots: availableSlots})
+        res.send({ignoreDays, disabledTimeslots, timeslots: availableSlots})
         
     } catch(e) {
 
