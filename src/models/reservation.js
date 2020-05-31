@@ -41,21 +41,7 @@ reservationSchema.methods.addToCalender = async function(email, url) {
     const endTime = moment(reservation.dateTime).add(1,'hours');
     
     try{
-        const res = await calendar.freebusy.query({
-        requestBody: {
-            timeMin: reservation.dateTime,
-            timeMax: endTime,
-            timeZone: 'Africa/Cairo',
-            items: [{ id: 'primary'}] 
-        }})
-
-    if(!res){
-        throw new Error('no space to reserve')
-    }
-    //check whether there is no event during this time
-    if(!(res.data.calendars.primary.busy.length === 0)){
-        throw new Error('no space to reserve')
-    }       
+             
         
     const response = await calendar.events.insert({
         calendarId:'primary',

@@ -7,11 +7,11 @@ const moment = require('moment-timezone')
 //app intialization
 const app = express()
 app.use(express.json())
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-  });
+// app.use(function(req, res, next) {
+//     res.header("Access-Control-Allow-Origin", "*");
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//     next();
+//   });
 app.get('/', (req, res) => {
     
 })
@@ -31,10 +31,12 @@ app.post('/', async (req, res) => {
     }
 })
 
-app.post('/reserve/:day/:location', async(req, res) => {
-    const day = req.params.day
+app.post('/reserve/:location', async(req, res) => {
     const location = req.params.location
     
+    let day = moment(new Date(req.body.dateTime)).tz('Africa/Cairo').format('dddd');
+    
+    day = day.toLowerCase()
     try {
         const timeSlot = await TimeSlot.findOne({day,location})
         if(!timeSlot){
@@ -105,5 +107,7 @@ app.get('/reservations/:location', async(req ,res) => {
     }
 })
 
-app.listen(process.env.PORT)
+app.listen(3000, () => {
+    console.log('Server is up')
+})
 
