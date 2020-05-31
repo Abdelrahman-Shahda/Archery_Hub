@@ -41,7 +41,7 @@ app.post('/reserve/:day/:location', async(req, res) => {
             return res.status(404).send()
         }
         const reservation = new Reservation({
-            dateTime: moment(req.body.dateTime, "MMMM Do YYYY, h:mm:ss A").tz('Africa/Cairo').format(),
+            dateTime: moment(req.body.dateTime).tz('Africa/Cairo').format(),
             timeReference: timeSlot._id
         })
         const url = `${req.protocol}://${req.get('host')}${req.originalUrl}`
